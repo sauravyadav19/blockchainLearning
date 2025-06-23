@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/              # This will ignore all node_modules folders, including those inside LECTURES subdirectories.
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Hardhat specific artifacts
+# These patterns ensure that compiled contract output and cache from Hardhat projects are ignored.
+# The 'LECTURES/**/' prefix makes sure these rules apply to all sub-Hardhat projects.
+cache/
+artifacts/
+typechain/
+coverage/
+coverage.json
+lessons/**/cache/
+lessons/**/artifacts/
+lessons/**/typechain/
+lessons/**/coverage/
+lessons/**/coverage.json
+lessons/**/node_modules/
+# IDE specific files (common for VS Code, which Code-Server is based on)
+.DS_Store          # macOS specific file
+.idea/             # IntelliJ/WebStorm specific
+.vscode/           # VS Code specific settings/launch files
+*.swp              # Vim swap files
+*.swo              # Vim swap files
+
