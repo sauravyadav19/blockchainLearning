@@ -23,3 +23,11 @@ contract ParentHouse{
         return doorbell;
     }
 }
+
+contract ChildHouse is ParentHouse{
+    string private childPrivateSpace = "Child's Bedroom";
+
+    function useChildSharedSpace() public view returns(string memory){
+        return sharedSpace;
+    }
+}
