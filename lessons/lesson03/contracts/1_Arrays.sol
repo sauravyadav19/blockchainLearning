@@ -23,4 +23,7 @@ contract LearnArrays{
     function getFunderNames() public view returns(string [] memory){
         return fundersNames;
     }
+    function addFunder(string memory newFunder) public {
+        fundersNames.push(newFunder);
+    }
 }
