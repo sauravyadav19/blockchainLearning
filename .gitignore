@@ -43,6 +43,7 @@ lessons/**/typechain/
 lessons/**/coverage/
 lessons/**/coverage.json
 lessons/**/node_modules/
+lessons/**/deployments/
 # IDE specific files (common for VS Code, which Code-Server is based on)
 .DS_Store          # macOS specific file
 .idea/             # IntelliJ/WebStorm specific
