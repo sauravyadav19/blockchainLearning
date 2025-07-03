@@ -19,4 +19,8 @@ contract LearnArrays{
     //Example
 
     string[] public fundersNames = ['Jon', 'Dancerys','Arya'];
+
+    function getFunderNames() public view returns(string [] memory){
+        return fundersNames;
+    }
 }
