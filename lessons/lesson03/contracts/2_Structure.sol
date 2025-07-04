@@ -9,9 +9,38 @@ pragma solidity ^0.8.28;
 // here we are storing both funder's name and their amount in one single unit
 
 contract LearnStructures{
-    
+
     struct funderDetail {
         string name;
         uint amount;
     }
+
+    // creating an array of funders
+    funderDetail [] public funders;
+
+    constructor(){
+        funderDetail memory funder;
+        funder.name = "Jon";
+        funder.amount = 10;
+        funders.push(funder);
+    }
+
+    // function to push values in the our array of funders
+    function setFunders(string calldata _name, uint _amount) public{
+
+        funderDetail memory newFunder;
+        newFunder.name = _name;
+        newFunder.amount = _amount;
+        funders.push(newFunder);
+
+    }
+    //create a getter for funders
+    function getFunders() external view returns(funderDetail[] memory){
+
+        return funders;
+
+    }
+
+
+
 }
