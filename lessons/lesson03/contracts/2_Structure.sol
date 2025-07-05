@@ -43,23 +43,46 @@ contract LearnStructures{
         funder.name = "Jon";
         funder.amount = 10;
         funders.push(funder);
+        //CODE OPTIMIZATION:
+        //refer to setFunder() for a gas saving tip.
     }
 
     // function to push values in the our array of funders
     function setFunders(string calldata _name, uint _amount) public{
 
-        funderDetail memory newFunder;
-        newFunder.name = _name;
-        newFunder.amount = _amount;
-        funders.push(newFunder);
-
+        // funderDetail memory newFunder;
+        // newFunder.name = _name;
+        // newFunder.amount = _amount;
+        // funders.push(newFunder);
+        //CODE OPTIMIZATION:
+        funders.push(funderDetail({name:_name,amount:_amount}));
+        //Directly push them to the array instead the way the above commented code of using intermediatory variable
+        // save a little gas and easier to read
+        // same thing can be done with code of the constructor, but leaving it like that for future reference
     }
     //create a getter for funders
-    function getFunders() external view returns(funderDetail[] memory){
+    // CODE OPTIMIZATION:
 
-        return funders;
+    // function getFunders() external view returns(funderDetail[] memory){
+    //     return funders;
+    // }
 
-    }
+    //This might look like a function that has no problem, but under the hood its a ticking bomb
+    //the way this function is written it tries to return entire array all at once copying from the 
+    //storage, this is fine for an array which is small in size but when the funders array grows to 
+    // say even as small numbers as 2000, the cost would be astronomical gas, as it will send the EVM
+    // into a massive loop, and as the resouce are limited (the set gas allocated for one block), it would
+    // easily be exhausted because of this massive loop thus simply viewing your array would costly operation.
+
+    //SOLUTION:
+
+    // you can simply copy the funders one by one instead of asking for the entire array
+    // ANALOGY: say you work at a public library and if your boss ask to give you get him photocopy of all
+    // the books in the library at once, it would be chaotic to say the least, but if you bring one book at 
+    // a time on your desk, its easier to maintain and work with.
+
+    // Use index to reterive one funder at a time, that way its gas effective
+
 
 
 
